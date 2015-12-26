@@ -11,6 +11,8 @@
         android:layout_height="wrap_content">
     </com.mouse.cookie.editspinnerlib.EditSpinner>
 2、在Java文件中找到该控件，并添加内容
+        
+        //找到控件
         EditSpinner mEditSpinner = (EditSpinner)findViewById(R.id.es_mainactivity);
         
         //setHint
@@ -23,6 +25,6 @@
 
 就是这样简单。
 
-![image_1](https://github.com/cookiemouse/EditSpinner/tree/master/picture/edit_spinner_1)
-![image_2](https://github.com/cookiemouse/EditSpinner/tree/master/picture/edit_spinner_2)
-![image_3](https://github.com/cookiemouse/EditSpinner/tree/master/picture/edit_spinner_3)
+![image_1](https://github.com/cookiemouse/EditSpinner/tree/master/picture/edit_spinner_1.png)
+![image_2](https://github.com/cookiemouse/EditSpinner/tree/master/picture/edit_spinner_2.png)
+![image_3](https://github.com/cookiemouse/EditSpinner/tree/master/picture/edit_spinner_3.png)
