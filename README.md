@@ -22,3 +22,7 @@
         mEditSpinner.addAccount("4098765");
 
 就是这样简单。
+
+https://github.com/cookiemouse/EditSpinner/tree/master/picture/edit_spinner_1
+https://github.com/cookiemouse/EditSpinner/tree/master/picture/edit_spinner_2
+https://github.com/cookiemouse/EditSpinner/tree/master/picture/edit_spinner_3
