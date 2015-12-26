@@ -23,6 +23,6 @@
 
 就是这样简单。
 
-https://github.com/cookiemouse/EditSpinner/tree/master/picture/edit_spinner_1
-https://github.com/cookiemouse/EditSpinner/tree/master/picture/edit_spinner_2
-https://github.com/cookiemouse/EditSpinner/tree/master/picture/edit_spinner_3
+![image](https://github.com/cookiemouse/EditSpinner/tree/master/picture/edit_spinner_1)
+![image](https://github.com/cookiemouse/EditSpinner/tree/master/picture/edit_spinner_2)
+![image](https://github.com/cookiemouse/EditSpinner/tree/master/picture/edit_spinner_3)
