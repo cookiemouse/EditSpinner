@@ -150,6 +150,6 @@ public class EditSpinner extends RelativeLayout {
             }
         });
 
-        mPopupWindow.showAsDropDown(view, -5, 5);
+        mPopupWindow.showAsDropDown(view, R.dimen.xoff, R.dimen.yoff);
     }
 }
