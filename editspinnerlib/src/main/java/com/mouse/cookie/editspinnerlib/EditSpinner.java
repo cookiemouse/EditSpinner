@@ -138,7 +138,7 @@ public class EditSpinner extends RelativeLayout {
         });
 
         //PopupWindow
-        int width = 2 * view.getWidth() + mEditText.getWidth() + 10;
+        int width = 2 * view.getWidth() + mEditText.getWidth();
         mPopupWindow = new PopupWindow(contentView, width, ViewGroup.LayoutParams.WRAP_CONTENT, true);
         mPopupWindow.setTouchable(true);
         mPopupWindow.setBackgroundDrawable(getResources().getDrawable(R.drawable.background_null));
@@ -150,6 +150,6 @@ public class EditSpinner extends RelativeLayout {
             }
         });
 
-        mPopupWindow.showAsDropDown(view, R.dimen.xoff, R.dimen.yoff);
+        mPopupWindow.showAsDropDown(view, 0, 5);
     }
 }
