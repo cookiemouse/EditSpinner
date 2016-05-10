@@ -34,6 +34,9 @@ public class EditSpinner extends RelativeLayout {
 
     private PopupWindow mPopupWindow;
 
+    private OnDeletedListener listener;
+    private OnEditSpinnerItemClickListener itemClickListener;
+
     //构造函数
     public EditSpinner(Context context) {
         super(context);
@@ -124,7 +127,7 @@ public class EditSpinner extends RelativeLayout {
         View contentView = LayoutInflater.from(getContext()).inflate(R.layout.list_layout, null);
 
         //下拉列表
-        mListAdapter = new ListAdapter(mContext, mList);
+        mListAdapter = new ListAdapter(mContext, mList, listener);
         mListView = (ListView) contentView.findViewById(R.id.lv_editspinner);
         mListView.setAdapter(mListAdapter);
         mListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -133,6 +136,7 @@ public class EditSpinner extends RelativeLayout {
                 String content = mList.get(position);
                 mEditText.setText(content);
                 mEditText.setSelection(content.length());
+                itemClickListener.onEditSpinnerItemClickListener();
                 mPopupWindow.dismiss();
             }
         });
@@ -151,5 +155,25 @@ public class EditSpinner extends RelativeLayout {
         });
 
         mPopupWindow.showAsDropDown(view, 0, 5);
+    }
+
+    //删除回调方法
+    public interface OnDeletedListener{
+        void onDeletedListener();
+    }
+
+    //贴号点击事件
+    public interface OnEditSpinnerItemClickListener{
+        void onEditSpinnerItemClickListener();
+    }
+
+    //设置删除回调监听
+    public void setOnDeletedListener(OnDeletedListener listener){
+        this.listener = listener;
+    }
+
+    //设置帐号点击事件
+    public void setOnEditSpinnerItemClickListener(OnEditSpinnerItemClickListener listener){
+        this.itemClickListener = listener;
     }
 }

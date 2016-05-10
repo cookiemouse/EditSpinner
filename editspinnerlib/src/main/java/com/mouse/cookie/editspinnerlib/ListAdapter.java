@@ -15,15 +15,17 @@ import java.util.List;
 /**
  * Created by cookie on 2015/12/26.
  */
-public class ListAdapter extends BaseAdapter  {
+public class ListAdapter extends BaseAdapter {
 
     private Context mContext;
     private List<String> mList;
     private LayoutInflater mLayoutInflater;
+    private EditSpinner.OnDeletedListener listener;
 
-    public ListAdapter(Context context, List<String> mList) {
+    public ListAdapter(Context context, List<String> mList, EditSpinner.OnDeletedListener listener) {
         this.mList = mList;
         this.mContext = context;
+        this.listener = listener;
         mLayoutInflater = LayoutInflater.from(context);
     }
 
@@ -71,6 +73,9 @@ public class ListAdapter extends BaseAdapter  {
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 mList.remove(position);
+                if (null != listener){
+                    listener.onDeletedListener();
+                }
                 notifyDataSetChanged();
             }
         });
