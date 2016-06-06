@@ -1,6 +1,8 @@
 package com.mouse.cookie.editspinnerlib;
 
 import android.content.Context;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -18,7 +20,7 @@ import java.util.List;
 /**
  * Created by cookie on 2015/12/26.
  */
-public class EditSpinner extends RelativeLayout {
+public class EditSpinner extends RelativeLayout{
 
     private LayoutInflater mLayoutInflater;
 
@@ -36,6 +38,7 @@ public class EditSpinner extends RelativeLayout {
 
     private OnDeletedListener listener;
     private OnEditSpinnerItemClickListener itemClickListener;
+    private OnEditTextChangeListener onEditTextChangeListener;
 
     //构造函数
     public EditSpinner(Context context) {
@@ -69,6 +72,25 @@ public class EditSpinner extends RelativeLayout {
         mImageViewLeft = (ImageView)findViewById(R.id.iv_editspinner_left);
         mImageViewRight = (ImageView) findViewById(R.id.iv_editspinner_right);
         setDrawableRight(R.drawable.down_right);
+
+        mEditText.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+                if (null != onEditTextChangeListener){
+                    onEditTextChangeListener.onEditActionListener();
+                }
+            }
+        });
 
         mImageViewRight.setOnClickListener(new OnClickListener() {
             @Override
@@ -136,7 +158,7 @@ public class EditSpinner extends RelativeLayout {
                 String content = mList.get(position);
                 mEditText.setText(content);
                 mEditText.setSelection(content.length());
-                itemClickListener.onEditSpinnerItemClickListener();
+                itemClickListener.onEditSpinnerItemClickListener(position);
                 mPopupWindow.dismiss();
             }
         });
@@ -159,12 +181,12 @@ public class EditSpinner extends RelativeLayout {
 
     //删除回调方法
     public interface OnDeletedListener{
-        void onDeletedListener();
+        void onDeletedListener(int position);
     }
 
     //贴号点击事件
     public interface OnEditSpinnerItemClickListener{
-        void onEditSpinnerItemClickListener();
+        void onEditSpinnerItemClickListener(int position);
     }
 
     //设置删除回调监听
@@ -175,5 +197,14 @@ public class EditSpinner extends RelativeLayout {
     //设置帐号点击事件
     public void setOnEditSpinnerItemClickListener(OnEditSpinnerItemClickListener listener){
         this.itemClickListener = listener;
+    }
+
+    //内容改变监听器
+    public interface OnEditTextChangeListener{
+        void onEditActionListener();
+    }
+
+    public void setOnEditTextChangeListener(OnEditTextChangeListener listener){
+        this.onEditTextChangeListener = listener;
     }
 }

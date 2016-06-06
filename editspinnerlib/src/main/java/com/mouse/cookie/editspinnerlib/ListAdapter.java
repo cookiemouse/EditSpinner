@@ -74,7 +74,7 @@ public class ListAdapter extends BaseAdapter {
             public void onClick(DialogInterface dialog, int which) {
                 mList.remove(position);
                 if (null != listener){
-                    listener.onDeletedListener();
+                    listener.onDeletedListener(position);
                 }
                 notifyDataSetChanged();
             }
